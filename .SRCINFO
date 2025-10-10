@@ -1,10 +1,10 @@
-pkgbase = raindrops
-	pkgdesc = An aesthetic rain CLI program written in Rust
+pkgbase = droplet
+	pkgdesc = An aesthetic droplet CLI program written in Rust
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/execRooted/raindrops.git
+	url = https://github.com/execRooted/droplet.git
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 
-pkgname = raindrops
+pkgname = droplet

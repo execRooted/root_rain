@@ -1,9 +1,9 @@
-pkgname=raindrops
+pkgname=droplet
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="An aestetic rain CLI program written in Rust"
+pkgdesc="An aesthetic droplet CLI program written in Rust"
 arch=('x86_64')
-url="https://github.com/yourusername/raindrops"
+url="https://github.com/yourusername/droplet"
 license=('MIT')
 depends=()
 makedepends=('rust')
@@ -18,6 +18,6 @@ build() {
 
 package() {
     cd "$srcdir"
-    install -Dm755 target/release/raindrops "$pkgdir/usr/bin/raindrops"
+    install -Dm755 target/release/droplet "$pkgdir/usr/bin/droplet"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

@@ -10,8 +10,8 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 clear
-echo -e "${YELLOW}Raindrops Uninstaller${NC}"
-echo -e "${YELLOW}=====================${NC}"
+echo -e "${YELLOW}Droplet Uninstaller${NC}"
+echo -e "${YELLOW}===================${NC}"
 echo -e "${TURQUOISE}by execRooted${NC}"
 echo ""
 
@@ -20,10 +20,10 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-if [ -f "/usr/local/bin/raindrops" ]; then
-    echo -e "${YELLOW}[INFO]${NC} Removing raindrops from /usr/local/bin..."
-    rm /usr/local/bin/raindrops
+if [ -f "/usr/local/bin/droplet" ]; then
+    echo -e "${YELLOW}[INFO]${NC} Removing droplet from /usr/local/bin..."
+    rm /usr/local/bin/droplet
     echo -e "${TURQUOISE}[SUCCESS]${NC} Uninstallation complete!"
 else
-    echo -e "${YELLOW}[INFO]${NC} raindrops is not installed."
+    echo -e "${YELLOW}[INFO]${NC} droplet is not installed."
 fi

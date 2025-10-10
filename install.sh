@@ -10,8 +10,8 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 clear
-echo -e "${YELLOW}Raindrops Installer${NC}"
-echo -e "${YELLOW}==================${NC}"
+echo -e "${YELLOW}Droplet Installer${NC}"
+echo -e "${YELLOW}=================${NC}"
 echo -e "${TURQUOISE}by execRooted${NC}"
 echo ""
 
@@ -116,14 +116,14 @@ else
     echo -e "${YELLOW}[INFO]${NC} Rust is already installed."
 fi
 
-echo -e "${YELLOW}[INFO]${NC} Building raindrops..."
+echo -e "${YELLOW}[INFO]${NC} Building droplet..."
 cargo build --release
 
-echo -e "${YELLOW}[INFO]${NC} Installing raindrops to /usr/local/bin..."
-cp target/release/raindrops /usr/local/bin/raindrops
+echo -e "${YELLOW}[INFO]${NC} Installing droplet to /usr/local/bin..."
+cp target/release/droplet /usr/local/bin/droplet
 
-chmod +x /usr/local/bin/raindrops
+chmod +x /usr/local/bin/droplet
 
 echo -e "${TURQUOISE}[SUCCESS]${NC} Installation complete!"
-echo -e "${YELLOW}[INFO]${NC} You can now run 'raindrops' from anywhere."
-echo -e "${YELLOW}[USAGE]${NC} To run the raindrops animation, simply type: raindrops"
+echo -e "${YELLOW}[INFO]${NC} You can now run 'droplet' from anywhere."
+echo -e "${YELLOW}[USAGE]${NC} To run the droplet animation, simply type: droplet"

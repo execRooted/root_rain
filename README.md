@@ -1,6 +1,6 @@
 # Raindrops
 
-An aestetic raindrops program written in Rust.
+An aestetic droplet program written in Rust.
 
 ## Installation
 
@@ -11,10 +11,10 @@ An aestetic raindrops program written in Rust.
 
 
 ```
-git clone https://github.com/execrooted/raindrops.git
+git clone https://github.com/execrooted/droplet.git
 ```
 ```
-cd raindrops
+cd droplet
 ```
 ```
 sudo ./install.sh
@@ -24,8 +24,8 @@ sudo ./install.sh
 
 The installer will automatically:
 - Install Rust if not present
-- Build the raindrops
-- Install it system-wide to `/usr/local/bin/raindrops`
+- Build the droplet
+- Install it system-wide to `/usr/local/bin/droplet`
 
 
 
@@ -34,14 +34,14 @@ The installer will automatically:
 If you have the PKGBUILD file, install using makepkg:
 
 ```bash
-yay -S raindrops
+yay -S droplet
 # Or any AUR helper
 ```
 This will build and install the package globally.
 
 Then to run it:
 ```
-raindrops
+droplet
 ```
 
 
@@ -49,7 +49,7 @@ raindrops
 ## Uninstallation
 
 ```bash
-cd raindrops
+cd droplet
 ```
 ```
 sudo ./uninstall.sh
@@ -57,7 +57,7 @@ sudo ./uninstall.sh
 ### Arch Linux 
 
 ```
-yay -R raindrops
+yay -R droplet
 # Or any AUR helper
 ```
 
@@ -66,7 +66,7 @@ yay -R raindrops
 Run the animation with default settings:
 
 ```bash
-raindrops
+droplet
 ```
 
 ### Command Line Options
@@ -84,17 +84,17 @@ raindrops
 
 Stowy weather with switching live colors:
 ```bash
-raindrops --weather snowy -l
+droplet --weather snowy -l
 ```
 
 Snow with left drift:
 ```bash
-raindrops --weather snowy --direction left
+droplet --weather snowy --direction left
 ```
 
 Fast animation with continuity:
 ```bash
-raindrops --speed fast --continuity
+droplet --speed fast --continuity
 ```
 
 ## Controls

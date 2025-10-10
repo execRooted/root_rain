@@ -7,7 +7,7 @@ url="https://github.com/execRooted/raindrops.git"
 license=('MIT')
 depends=()
 makedepends=('rust')
-source=()        # empty for local builds
+source=()       
 sha256sums=()
 
 build() {

@@ -14,6 +14,8 @@ A beautiful terminal-based rain animation simulation written in Rust.
 
 ## Installation
 
+### From Source (Rust)
+
 Ensure you have Rust installed, then clone and build:
 
 ```bash
@@ -21,6 +23,17 @@ git clone <repository-url>
 cd raindrops
 cargo build --release
 ```
+
+### Arch Linux (AUR/PKGBUILD)
+
+If you have the PKGBUILD file, install using makepkg:
+
+```bash
+cd raindrops
+makepkg -si
+```
+
+This will build and install the package globally.
 
 ## Usage
 

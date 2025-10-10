@@ -1,46 +1,72 @@
 # Raindrops
 
-A beautiful terminal-based rain animation simulation written in Rust.
-
-## Features
-
-- Realistic raindrop animation with physics
-- Multiple weather modes: normal, stormy, snowy
-- Horizontal drift control (left/right)
-- Color customization with gradient effects
-- Continuity mode for seamless animation
-- Smooth 200 FPS performance
-- Cross-platform terminal support
+An aestetic raindrops program written in Rust.
 
 ## Installation
 
-### From Source (Rust)
+### Automated Installation (Recommended)
 
-Ensure you have Rust installed, then clone and build:
+1. Clone or download this repository
+2. Run the installer:
 
-```bash
-git clone <repository-url>
+
+```
+git clone https://github.com/execrooted/raindrops.git
+```
+```
 cd raindrops
-cargo build --release
+```
+```
+sudo ./install.sh
 ```
 
-### Arch Linux (AUR/PKGBUILD)
+
+
+The installer will automatically:
+- Install Rust if not present
+- Build the raindrops
+- Install it system-wide to `/usr/local/bin/raindrops`
+
+
+
+### Arch Linux 
 
 If you have the PKGBUILD file, install using makepkg:
 
 ```bash
-cd raindrops
-makepkg -si
+yay -S raindrops
+# Or any AUR helper
+```
+This will build and install the package globally.
+
+Then to run it:
+```
+raindrops
 ```
 
-This will build and install the package globally.
+
+
+## Uninstallation
+
+```bash
+cd raindrops
+```
+```
+sudo ./uninstall.sh
+```
+### Arch Linux 
+
+```
+yay -R raindrops
+# Or any AUR helper
+```
 
 ## Usage
 
 Run the animation with default settings:
 
 ```bash
-cargo run
+raindrops
 ```
 
 ### Command Line Options
@@ -51,41 +77,36 @@ cargo run
 - `-w, --weather <WEATHER>`: Set weather type (rainy, snowy)
 - `--direction <DIRECTION>`: Set horizontal drift (left, right, down)
 - `--continuity`: Enable continuity mode (particles disappear instead of staying)
-- `-l, --live [COLORS]`: Enable live effect (colors fade from color1 to color2 based on height, defaults to blue white if no colors specified)
+- `-l, --live [COLOR1] [COLOR2]`: Enable live effect (colors fade from color1 to color2 based on height, defaults to blue white if no colors specified)
 - `--character <CHAR>`: Set all particles to a specific character
 
 ### Examples
 
-Stormy weather with red gradient:
+Stowy weather with switching live colors:
 ```bash
-cargo run -- --weather storm --color red --gradient
+raindrops --weather snowy -l
 ```
 
 Snow with left drift:
 ```bash
-cargo run -- --weather snowy --direction left
+raindrops --weather snowy --direction left
 ```
 
 Fast animation with continuity:
 ```bash
-cargo run -- --speed fast --continuity
+raindrops --speed fast --continuity
 ```
 
 ## Controls
 
 - Press Ctrl+C to exit the animation
 
-## Dependencies
 
-- clap: Command line argument parsing
-- crossterm: Terminal manipulation
-- rand: Random number generation
-- ctrlc: Signal handling
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit issues and pull requests.
 
-## License
+---
 
-[Add license information here]
+***Made by execRooted***

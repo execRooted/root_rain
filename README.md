@@ -1,4 +1,4 @@
-# Raindrops
+# droplet
 
 An aestetic droplet program written in Rust.
 

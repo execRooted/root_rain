@@ -2,6 +2,10 @@
 
 set -e
 
+if [ -z "$TERM" ]; then
+    export TERM=xterm
+fi
+
 clear
 
 TURQUOISE='\033[36m'
@@ -17,6 +21,7 @@ echo ""
 
 if [ "$EUID" -ne 0 ]; then
     echo -e "${RED}[ERROR]${NC} This uninstaller must be run as root."
+    echo -e "${YELLOW}[INFO]${NC} Please run: sudo $0"
     exit 1
 fi
 

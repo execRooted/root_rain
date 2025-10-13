@@ -9,8 +9,12 @@ url="https://github.com/execrooted/droplet"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz"
+        "install.sh"
+        "uninstall.sh")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -19,8 +23,10 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/local/bin/$pkgname"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "install.sh" "$pkgdir/usr/share/$pkgname/install.sh"
+    install -Dm755 "uninstall.sh" "$pkgdir/usr/share/$pkgname/uninstall.sh"
 }
 

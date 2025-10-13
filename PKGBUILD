@@ -1,4 +1,4 @@
-# Maintainer: execrooted <your@email.com>
+# Maintainer: execrooted <execrooted@gmail.com>
 
 pkgname=droplet
 pkgver=0.1.0

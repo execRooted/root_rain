@@ -173,7 +173,7 @@ if ! cp target/release/droplet /usr/local/bin/droplet; then
     exit 1
 fi
 
-if ! chmod +x /usr/bin/droplet; then
+if ! chmod +x /usr/local/bin/droplet; then
     echo -e "${RED}[ERROR]${NC} Failed to make droplet executable."
     exit 1
 fi

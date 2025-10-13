@@ -12,47 +12,53 @@ use ctrlc;
 
 
 #[derive(Parser)]
-#[command(author, about, long_about = "Available colors: black, red, green, yellow, blue, magenta, cyan, white, grey\nAvailable weather: rainy, snowy\nAvailable directions: left, right, down")]
+#[command(author, about, long_about = "Available colors: black, red, green, yellow, blue, magenta, cyan, white, grey\nAvailable weather: stormy, snowy\nAvailable directions: left, right, down\nAvailable chars-on-screen: low, medium, high\nAvailable particle-on-ground: short, medium, long")]
 struct Args {
-    
-    #[arg(short, long, value_parser = parse_speed)]
-    speed: Option<f32>,
 
-    
-    #[arg(short, long, value_parser = parse_color)]
+    #[arg(short, long, value_parser = parse_speed, default_value = "medium", help = "Set animation speed (fast=1.5x, medium=1.0x, slow=0.5x)", long_help = "Set animation speed (fast=1.5x, medium=1.0x, slow=0.5x)")]
+    speed: f32,
+
+
+    #[arg(short, long, value_parser = parse_color, help = "Set drop color (black, red, green, yellow, blue, magenta, cyan, white, grey)", long_help = "Set drop color (black, red, green, yellow, blue, magenta, cyan, white, grey)")]
     color: Option<Color>,
 
-    
+
     #[arg(short, long)]
     bold: bool,
 
-    
-    #[arg(short = 'w', long)]
+
+    #[arg(short = 'w', long, value_parser = parse_weather, help = "Set weather type (stormy, snowy)", long_help = "Set weather type (stormy, snowy)")]
     weather: Option<String>,
 
-    
-    #[arg(long)]
+
+    #[arg(long, value_parser = parse_direction, help = "Set horizontal drift (left, right, down)", long_help = "Set horizontal drift (left, right, down)")]
     direction: Option<String>,
 
-    
+
     #[arg(long)]
     continuity: bool,
 
-    
-    /// Enable live mode (colors fade from color1 to color2 based on height, defaults to blue white if no args)
+
+  
     #[arg(short, long, num_args = 0..=2)]
     live: Option<Vec<String>>,
 
-    
-    #[arg(long)]
+
+    #[arg(long, help = "Set all particles to a specific character", long_help = "Set all particles to a specific character")]
     character: Option<char>,
+
+    #[arg(long, value_parser = parse_chars_on_screen, help = "Set number of characters on screen (low, medium, high)", long_help = "Set number of characters on screen (low, medium, high)")]
+    chars_on_screen: Option<String>,
+
+    #[arg(long, value_parser = parse_particle_on_ground, help = "Set how long particles stay on ground (short, medium, long)", long_help = "Set how long particles stay on ground (short, medium, long)")]
+    particle_on_ground: Option<String>,
 }
 
 fn parse_speed(s: &str) -> Result<f32, String> {
     match s.to_lowercase().as_str() {
-        "fast" => Ok(1.5),
-        "medium" => Ok(1.0),
-        "slow" => Ok(0.5),
+        "fast" => Ok(1.7),
+        "medium" => Ok(1.2),
+        "slow" => Ok(1.0),
         _ => Err(format!("Invalid speed '{}'. Use 'fast', 'medium', or 'slow'", s)),
     }
 }
@@ -72,6 +78,34 @@ fn parse_color(s: &str) -> Result<Color, String> {
             "Invalid color '{}'. Available colors: black, red, green, yellow, blue, magenta, cyan, white, grey",
             s
         )),
+    }
+}
+
+fn parse_chars_on_screen(s: &str) -> Result<String, String> {
+    match s.to_lowercase().as_str() {
+        "low" | "medium" | "high" => Ok(s.to_lowercase()),
+        _ => Err(format!("Invalid chars-on-screen '{}'. Use 'low', 'medium', or 'high'", s)),
+    }
+}
+
+fn parse_particle_on_ground(s: &str) -> Result<String, String> {
+    match s.to_lowercase().as_str() {
+        "short" | "medium" | "long" => Ok(s.to_lowercase()),
+        _ => Err(format!("Invalid particle-on-ground '{}'. Use 'short', 'medium', or 'long'", s)),
+    }
+}
+
+fn parse_weather(s: &str) -> Result<String, String> {
+    match s.to_lowercase().as_str() {
+        "stormy" | "snowy" => Ok(s.to_lowercase()),
+        _ => Err(format!("Invalid weather '{}'. Use 'stormy' or 'snowy'", s)),
+    }
+}
+
+fn parse_direction(s: &str) -> Result<String, String> {
+    match s.to_lowercase().as_str() {
+        "left" | "right" | "down" => Ok(s.to_lowercase()),
+        _ => Err(format!("Invalid direction '{}'. Use 'left', 'right', or 'down'", s)),
     }
 }
 
@@ -113,6 +147,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         continuity,
         live,
         character,
+        chars_on_screen,
+        particle_on_ground,
     } = Args::parse();
 
     
@@ -124,16 +160,36 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let weather = weather.unwrap_or_default().to_lowercase();
     let direction = direction.unwrap_or_else(|| "down".to_string()).to_lowercase();
 
+    let (chars_on_screen, particle_on_ground) = if weather == "stormy" {
+        (
+            chars_on_screen.unwrap_or_else(|| "high".to_string()),
+            particle_on_ground.unwrap_or_else(|| "long".to_string()),
+        )
+    } else {
+        (
+            chars_on_screen.unwrap_or_else(|| "medium".to_string()),
+            particle_on_ground.unwrap_or_else(|| "medium".to_string()),
+        )
+    };
+
     
-    let mut raindrop_chars = vec!['.', ',', '`', '\'', '|', 'o'];
+    let mut raindrop_chars = if weather == "stormy" {
+        vec!['.', ',', '`', '\'', '|', 'o', '*', '+']
+    } else if weather == "snowy" {
+        vec!['*']
+    } else {
+        vec!['.', ',', '`', '\'', '|', 'o']
+    };
     if let Some(ch) = character {
         raindrop_chars = vec![ch];
-    } else if weather == "snowy" {
-        raindrop_chars = vec!['*'];
     }
 
     
-    let speed_multiplier = speed.unwrap_or(1.0);
+    let speed_multiplier = if weather == "stormy" {
+        if speed > 1.0 { speed } else { 1.5 }
+    } else {
+        speed
+    };
 
     
     let weather_multiplier = if weather == "snowy" {
@@ -153,7 +209,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     };
 
     
-    let spawn_base = if weather == "snowy" { 0.4 } else { 1.2 };
+    let spawn_base = match chars_on_screen.as_str() {
+        "low" => if weather == "snowy" { 0.1 } else { 0.3 },
+        "high" => if weather == "snowy" { 0.8 } else { 2.5 },
+        _ => if weather == "snowy" { 0.4 } else { 1.2 },
+    };
+
     let spawn_prob = (spawn_base * speed_multiplier).clamp(0.01, 0.98);
 
     
@@ -222,7 +283,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
 
         
-        let grounded_life = Duration::from_millis((1200.0 / speed_multiplier as f32) as u64);
+        let grounded_life_multiplier = match particle_on_ground.as_str() {
+            "short" => 0.5,
+            "long" => 2.0,
+            _ => 1.0,
+        };
+        let grounded_life = Duration::from_millis(((1200.0 * grounded_life_multiplier) / speed_multiplier as f32) as u64);
         drops.retain(|d| {
             if d.to_remove {
                 false

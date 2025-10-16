@@ -14,7 +14,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 clear
-echo -e "${YELLOW}Root Rain Installer${NC}"
+echo -e "${YELLOW}root_rain installer${NC}"
 echo -e "${YELLOW}==================${NC}"
 echo -e "${TURQUOISE}by execRooted${NC}"
 echo ""
@@ -187,4 +187,5 @@ fi
 echo -e "${TURQUOISE}[SUCCESS]${NC} Installation complete!"
 echo -e "${YELLOW}[INFO]${NC} You can now run 'root_rain' or 'rr' from anywhere."
 echo -e "${YELLOW}[USAGE]${NC} To run the root_rain animation, simply type: root_rain or rr"
+echo -e "${YELLOW}[USAGE]${NC} For help run root_rain -h"
 

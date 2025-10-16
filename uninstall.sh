@@ -14,7 +14,7 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 clear
-echo -e "${YELLOW}Root Rain Uninstaller${NC}"
+echo -e "${YELLOW}root_rain uninstaller${NC}"
 echo -e "${YELLOW}====================${NC}"
 echo -e "${TURQUOISE}by execRooted${NC}"
 echo ""
@@ -33,3 +33,4 @@ if [ -f "/usr/local/bin/root_rain" ]; then
 else
     echo -e "${YELLOW}[INFO]${NC} root_rain is not installed."
 fi
+

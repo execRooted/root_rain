@@ -3,17 +3,28 @@ name = "root_rain"
 version = "0.1.3"
 edition = "2021"
 authors = ["execrooted <execrooted@gmail.com>"]
-description = "A colorful terminal weather animation tool written in Rust"
+description = "A colorful animated weather simulation for the terminal — rain and snow effects with customizable speed, color, and style."
 license = "MIT"
 repository = "https://github.com/execrooted/root_rain"
+homepage = "https://github.com/execrooted/root_rain"
 readme = "README.md"
-keywords = ["cli", "terminal", "root_rain", "weather", "aestetic", "animation", "cli"] 
-categories = ["command-line-utilities", "weather", "aestetic", "nice", "animation", "cli"]   
+
+keywords = ["cli", "terminal", "weather", "animation", "aesthetic"]
+
+categories = ["command-line-utilities", "visualization", "graphics", "simulation", "games"]
 
 [dependencies]
 clap = { version = "4.0", features = ["derive"] }
 crossterm = "0.27"
 rand = "0.8"
 ctrlc = "3.4"
+
+[package.metadata.aur]
+maintainer = "execrooted <execrooted@gmail.com>"
+url = "https://github.com/execrooted/root_rain"
+license = "MIT"
+description = "A colorful terminal weather animation tool written in Rust (rain and snow effects)"
+depends = []
+makedepends = ["rust", "cargo"]
 
 

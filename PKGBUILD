@@ -1,11 +1,11 @@
 # Maintainer: execrooted <execrooted@gmail.com>
 
-pkgname=droplet
+pkgname=root_rain
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A colorful terminal weather animation tool written in Rust (rain and snow effects)"
 arch=('x86_64')
-url="https://github.com/execrooted/droplet"
+url="https://github.com/execrooted/root_rain"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')

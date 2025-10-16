@@ -14,8 +14,8 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 clear
-echo -e "${YELLOW}Droplet Uninstaller${NC}"
-echo -e "${YELLOW}===================${NC}"
+echo -e "${YELLOW}Root Rain Uninstaller${NC}"
+echo -e "${YELLOW}====================${NC}"
 echo -e "${TURQUOISE}by execRooted${NC}"
 echo ""
 
@@ -25,10 +25,11 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-if [ -f "/usr/local/bin/droplet" ]; then
-    echo -e "${YELLOW}[INFO]${NC} Removing droplet from /usr/local/bin..."
-    rm /usr/local/bin/droplet
+if [ -f "/usr/local/bin/root_rain" ]; then
+    echo -e "${YELLOW}[INFO]${NC} Removing root_rain and rr from /usr/local/bin..."
+    rm /usr/local/bin/root_rain
+    rm -f /usr/local/bin/rr
     echo -e "${TURQUOISE}[SUCCESS]${NC} Uninstallation complete!"
 else
-    echo -e "${YELLOW}[INFO]${NC} droplet is not installed."
+    echo -e "${YELLOW}[INFO]${NC} root_rain is not installed."
 fi

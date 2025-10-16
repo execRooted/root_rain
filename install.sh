@@ -14,8 +14,8 @@ YELLOW='\033[1;33m'
 NC='\033[0m'
 
 clear
-echo -e "${YELLOW}Droplet Installer${NC}"
-echo -e "${YELLOW}=================${NC}"
+echo -e "${YELLOW}Root Rain Installer${NC}"
+echo -e "${YELLOW}==================${NC}"
 echo -e "${TURQUOISE}by execRooted${NC}"
 echo ""
 
@@ -161,24 +161,30 @@ else
     echo -e "${YELLOW}[INFO]${NC} Rust is already installed."
 fi
 
-echo -e "${YELLOW}[INFO]${NC} Building droplet..."
+echo -e "${YELLOW}[INFO]${NC} Building root_rain..."
 if ! cargo build --release; then
-    echo -e "${RED}[ERROR]${NC} Failed to build droplet."
+    echo -e "${RED}[ERROR]${NC} Failed to build root_rain."
     exit 1
 fi
 
-echo -e "${YELLOW}[INFO]${NC} Installing droplet to /usr/local/bin..."
-if ! cp target/release/droplet /usr/local/bin/droplet; then
-    echo -e "${RED}[ERROR]${NC} Failed to install droplet."
+echo -e "${YELLOW}[INFO]${NC} Installing root_rain to /usr/local/bin..."
+if ! cp target/release/root_rain /usr/local/bin/root_rain; then
+    echo -e "${RED}[ERROR]${NC} Failed to install root_rain."
     exit 1
 fi
 
-if ! chmod +x /usr/local/bin/droplet; then
-    echo -e "${RED}[ERROR]${NC} Failed to make droplet executable."
+if ! chmod +x /usr/local/bin/root_rain; then
+    echo -e "${RED}[ERROR]${NC} Failed to make root_rain executable."
+    exit 1
+fi
+
+# Create symlink for 'rr' command
+if ! ln -sf /usr/local/bin/root_rain /usr/local/bin/rr; then
+    echo -e "${RED}[ERROR]${NC} Failed to create rr symlink."
     exit 1
 fi
 
 echo -e "${TURQUOISE}[SUCCESS]${NC} Installation complete!"
-echo -e "${YELLOW}[INFO]${NC} You can now run 'droplet' from anywhere."
-echo -e "${YELLOW}[USAGE]${NC} To run the droplet animation, simply type: droplet"
+echo -e "${YELLOW}[INFO]${NC} You can now run 'root_rain' or 'rr' from anywhere."
+echo -e "${YELLOW}[USAGE]${NC} To run the root_rain animation, simply type: root_rain or rr"
 

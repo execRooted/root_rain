@@ -1,6 +1,6 @@
-# droplet
+# root_rain
 
-An aestetic droplet program written in Rust.
+An aestetic root_rain program written in Rust.
 
 ## Installation
 
@@ -11,10 +11,10 @@ An aestetic droplet program written in Rust.
 
 
 ```
-git clone https://github.com/execrooted/droplet.git
+git clone https://github.com/execrooted/root_rain.git
 ```
 ```
-cd droplet
+cd root_rain
 ```
 ```
 sudo ./install.sh
@@ -24,8 +24,8 @@ sudo ./install.sh
 
 The installer will automatically:
 - Install Rust if not present
-- Build the droplet
-- Install it system-wide to `/usr/local/bin/droplet`
+- Build the root_rain
+- Install it system-wide to `/usr/local/bin/root_rain`
 
 
 
@@ -34,14 +34,14 @@ The installer will automatically:
 If you have the PKGBUILD file, install using makepkg:
 
 ```bash
-yay -S droplet
+yay -S root_rain
 # Or any AUR helper
 ```
 This will build and install the package globally.
 
 Then to run it:
 ```
-droplet
+root_rain
 ```
 
 
@@ -49,7 +49,7 @@ droplet
 ## Uninstallation
 
 ```bash
-cd droplet
+cd root_rain
 ```
 ```
 sudo ./uninstall.sh
@@ -57,7 +57,7 @@ sudo ./uninstall.sh
 ### Arch Linux 
 
 ```
-yay -R droplet
+yay -R root_rain
 # Or any AUR helper
 ```
 
@@ -66,7 +66,7 @@ yay -R droplet
 Run the animation with default settings:
 
 ```bash
-droplet
+root_rain
 ```
 
 ### Command Line Options
@@ -84,17 +84,17 @@ droplet
 
 Stowy weather with switching live colors:
 ```bash
-droplet --weather snowy -l
+root_rain --weather snowy -l
 ```
 
 Snow with left drift:
 ```bash
-droplet --weather snowy --direction left
+root_rain --weather snowy --direction left
 ```
 
 Fast animation with continuity:
 ```bash
-droplet --speed fast --continuity
+root_rain --speed fast --continuity
 ```
 
 ## Controls

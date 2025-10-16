@@ -1,9 +1,9 @@
-pkgname=droplet
+pkgname=root_rain
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="An aesthetic droplet CLI program written in Rust"
+pkgdesc="An aesthetic root_rain CLI program written in Rust"
 arch=('x86_64')
-url="https://github.com/yourusername/droplet"
+url="https://github.com/yourusername/root_rain"
 license=('MIT')
 depends=()
 makedepends=('rust')
@@ -18,6 +18,6 @@ build() {
 
 package() {
     cd "$srcdir"
-    install -Dm755 target/release/droplet "$pkgdir/usr/bin/droplet"
+    install -Dm755 target/release/root_rain "$pkgdir/usr/bin/root_rain"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

@@ -10,7 +10,6 @@ use std::io::stdout;
 use std::time::{Duration, Instant};
 use ctrlc;
 
-
 #[derive(Parser)]
 #[command(author, about, long_about = "Available colors: black, red, green, yellow, blue, magenta, cyan, white, grey\nAvailable weather: stormy, snowy\nAvailable directions: left, right, down\nAvailable chars-on-screen: low, medium, high\nAvailable particle-on-ground: short, medium, long")]
 struct Args {

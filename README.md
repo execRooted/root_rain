@@ -29,16 +29,6 @@ The installer will automatically:
 
 
 
-### Arch Linux 
-
-If you have the PKGBUILD file, install using makepkg:
-
-```bash
-yay -S root_rain
-# Or any AUR helper
-```
-This will build and install the package globally.
-
 Then to run it:
 ```
 root_rain
@@ -54,12 +44,7 @@ cd root_rain
 ```
 sudo ./uninstall.sh
 ```
-### Arch Linux 
 
-```
-yay -R root_rain
-# Or any AUR helper
-```
 
 ## Usage
 

@@ -1,6 +1,6 @@
 # root_rain
 
-An aestetic program written in Rust.
+An aestetic root_rain program written in Rust.
 
 ## Installation
 
@@ -110,4 +110,3 @@ Contributions are welcome! Please feel free to submit issues and pull requests.
 ---
 
 ***Made by execRooted***
-

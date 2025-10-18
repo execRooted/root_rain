@@ -20,7 +20,10 @@ cd root_rain
 sudo ./install.sh
 ```
 
-
+### Or, If you prefer crates.io
+```
+cargo install root_rain
+```
 
 The installer will automatically:
 - Install Rust if not present

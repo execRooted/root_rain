@@ -11,12 +11,13 @@ clear
 TURQUOISE='\033[36m'
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
 NC='\033[0m'
 
 clear
-echo -e "${YELLOW}root_rain installer${NC}"
-echo -e "${YELLOW}==================${NC}"
-echo -e "${TURQUOISE}by execRooted${NC}"
+echo -e "${BLUE}root_rain installer${NC}"
+echo -e "${BLUE}==================${NC}"
+echo -e "${BLUE}by execRooted${NC}"
 echo ""
 
 if [ "$EUID" -ne 0 ]; then
